@@ -2,6 +2,9 @@ pipeline {
     agent {
         label 'java'
     }
+    package{
+        choice(name: 'MAVEN_GOAL', choices: ['compile', 'package', 'clean package'], description: 'Pick something') 
+    }
     triggers {
         pollSCM('* * * * *')
     }
@@ -14,7 +17,7 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'mvn clean package'
+                sh 'mvn ${params.MAven_GOAL}'
 
             }
         }
