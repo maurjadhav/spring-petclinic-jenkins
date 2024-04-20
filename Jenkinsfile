@@ -3,10 +3,10 @@ pipeline {
         label 'java'
     }
     parameters {
-        choice(name: 'MAVEN_GOAL', choices: ['compile', 'package', 'clean package'], description: 'This is MAVEN_GOAL Pick one Opetion') 
+        choice(name: 'MAVEN_GOAL', choices: ['compile', 'package', 'clean package'], description: 'This is MAVEN_GOAL Pick one Option') 
     }
     triggers {
-        pollSCM('* * * * *')
+        pollSCM('*/10 * * * 0-6')
     }
     stages {
         stage('git clone') {
@@ -20,8 +20,6 @@ pipeline {
                 sh "mvn ${params.MAVEN_GOAL}"
                 junit testResults: '**/surefire-reports/*.xml'
                 archive 'target/spring-petclinic-*.jar'
-                mail bcc: '', body: 'Build completed', cc: '', from: '', replyTo: '',
-                subject: 'Build completed', to: 'all@learnigthoughts.io'
             }
             post {
                 failure {
