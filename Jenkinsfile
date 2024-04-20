@@ -2,7 +2,7 @@ pipeline {
     agent {
         label 'java'
     }
-    package{
+    parameters {
         choice(name: 'MAVEN_GOAL', choices: ['compile', 'package', 'clean package'], description: 'Pick something') 
     }
     triggers {
