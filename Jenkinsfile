@@ -35,13 +35,13 @@ pipeline {
                         subject: "Build of ${JOB_BASE_NAME} with Build Id ${BUILD_ID} is failed",
                         body: "Refer to ${RUN_DISPLAY_URL} for more info"
                 }
-//                success {
-//                    mail bcc: 'all@learningthoughts.io',
-//                        from: 'jenkins@learningthouths.io',
-//                        to: "dev@learningthoughs.io",
-//                        subject: "Build of ${JOB_BASE_NAME} with Build Id ${BUILD_ID} is success",
-//                        body: "Refer to ${RUN_DISPLAY_URL} for more info"
-//                }
+                success {
+                    mail bcc: 'all@learningthoughts.io',
+                        from: 'jenkins@learningthouths.io',
+                        to: "dev@learningthoughs.io",
+                        subject: "Build of ${JOB_BASE_NAME} with Build Id ${BUILD_ID} is success",
+                        body: "Refer to ${RUN_DISPLAY_URL} for more info"
+                }
             }
         }
     }
