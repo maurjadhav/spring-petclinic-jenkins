@@ -19,7 +19,7 @@ pipeline {
             steps {
                 sh "mvn ${params.MAVEN_GOAL}"
                 junit testResults: '**/surefire-reports/*.xml'
-                archive '**/target/spring-petclinic-*.jar'
+                archive 'target/spring-petclinic-*.jar'
                 mail bcc: '', body: 'Build completed', cc: '', from: '', replyTo: '',
                 subject: 'Build completed', to: 'all@learnigthoughts.io'
             }
