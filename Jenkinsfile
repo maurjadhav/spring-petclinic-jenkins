@@ -5,9 +5,9 @@ pipeline {
     parameters {
         choice(name: 'MAVEN_GOAL', choices: ['compile', 'package', 'clean package'], description: 'This is MAVEN_GOAL Pick one Option') 
     }
-    triggers {
-        pollSCM('*/10 * * * 0-6')
-    }
+//    triggers {
+//        pollSCM('*/10 * * * 0-6')
+//    }
     stages {
         stage('git clone') {
             steps {
